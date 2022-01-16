@@ -26,6 +26,7 @@ export default {
   components: true,
 
   buildModules: [
+    '@nuxtjs/axios',
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
   ],
