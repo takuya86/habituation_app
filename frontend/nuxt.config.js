@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
 
   head: {
@@ -19,24 +19,20 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: [], //共通で読み込ませたいCSSプロパティを追加する
+  css: [], // 共通で読み込ませたいCSSプロパティを追加する
 
   plugins: [],
 
   components: true,
 
-  buildModules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify',
-  ],
+  buildModules: ['@nuxtjs/axios', '@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
 
   modules: [],
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
