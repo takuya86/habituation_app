@@ -5,6 +5,10 @@ export default {
     host: '0.0.0.0',
   },
 
+  publicRuntimeConfig: {
+    appName: process.env.APP_NAME,
+  },
+
   head: {
     titleTemplate: '%s - frontend',
     title: 'frontend',
