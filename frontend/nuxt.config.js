@@ -51,5 +51,28 @@ export default {
     },
   },
 
+  auth: {
+    redirect: {
+      login: '/users/login',
+      logout: '/',
+      callback: '/callback',
+      home: '/',
+    },
+    localStorage: false,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/v1/auth/sign_in',
+            method: 'post',
+            propertyName: 'access_token',
+          },
+          logout: { url: '/api/v1/auth/sign_out', method: 'delete' },
+          user: false,
+        },
+      },
+    },
+  },
+
   build: {},
 }
