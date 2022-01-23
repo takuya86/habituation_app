@@ -6,20 +6,9 @@
         {{ appName }}
       </v-toolbar-title>
       <v-spacer />
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-btn color="#FFF" plain>マイページ</v-btn>
+      <v-btn rounded color="primary" dark>＋目標追加</v-btn>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" fixed temporary right>
-      <v-list nav dense>
-        <v-list-item-group>
-          <v-list-item>
-            <v-list-item-title>HOME</v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>ABOUT</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
   </header>
 </template>
 
