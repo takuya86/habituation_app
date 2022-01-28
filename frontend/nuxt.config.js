@@ -50,7 +50,9 @@ export default {
       },
     },
   },
-
+  axios: {
+    baseURL: 'http://localhost:5000'
+  },
   auth: {
     redirect: {
       login: '/users/login',
