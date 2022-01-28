@@ -1,61 +1,65 @@
 <template>
-  <v-container>
-    <v-card width="400px" class="mx-auto mt-5">
-      <v-card-title>
-        <h1 class="display-1">新規登録</h1>
-      </v-card-title>
-      <v-card-text>
-        <v-form ref="form" lazy-validation>
-          <v-text-field
-            v-model="user.name"
-            prepend-icon="mdi-name"
-            label="名前"
-          />
-          <v-text-field
-            v-model="user.password"
-            prepend-icon="mdi-lock"
-            append-icon="mdi-eye-off"
-            label="パスワード"
-          />
-          <v-text-field
-            v-model="user.password_confirmation"
-            prepend-icon="mdi-lock"
-            append-icon="mdi-eye-off"
-            label="パスワード確認"
-          />
-          <v-card-actions>
-            <v-btn
-              color="light-green darken-1"
-              class="white--text"
-              @click="registerUser"
-            >
-              新規登録
-            </v-btn>
-          </v-card-actions>
-        </v-form>
-      </v-card-text>
-    </v-card>
+  <v-container fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" class="my-8 text-center">
+        <h1 class="text-h5 font-weight-bold">ユーザー登録</h1>
+      </v-col>
+      <v-card flat width="80%" max-width="320" color="transparent">
+        <v-text-field
+          v-model="user.email"
+          label="メールアドレスを入力"
+          placeholder="例）example@gmail.com"
+          outlined
+        />
+        <v-text-field
+          v-model="user.password"
+          label="パスワードを入力"
+          placeholder="半角英数字6文字以上必要です"
+          outlined
+        />
+        <v-text-field
+          v-model="user.name"
+          label="名前"
+          placeholder="例）田中 太郎"
+          outlined
+        />
+        <v-btn color="light-green darken-1" class="white--text" @click="signup">
+          新規登録する
+        </v-btn>
+      </v-card>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
-  name: 'App',
   auth: false,
   data() {
     return {
       user: {
-        name: '',
+        email: '',
         password: '',
-        password_confirmation: '',
+        name: '',
       },
     }
   },
   methods: {
-    registerUser() {
-      this.$axios.post('/api/v1/auth', this.user).then((response) => {
-        window.location.href = '/users/comfirmation'
-      })
+    async signup() {
+      try {
+        await this.$axios.post('/api/v1/auth', {
+          email: this.user.email,
+          password: this.user.password,
+          name: this.user.name,
+        })
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.user.email,
+            password: this.user.password,
+          },
+        })
+      } catch (e) {
+        this.error = e.response.data.errors.full_messages
+      }
     },
   },
 }
