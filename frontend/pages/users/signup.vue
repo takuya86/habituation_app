@@ -58,7 +58,8 @@ export default {
           },
         })
       } catch (e) {
-        this.error = e.response.data.errors.full_messages
+        // this.error = e.response.data.errors.full_messages
+        ;('登録できません')
       }
     },
   },
