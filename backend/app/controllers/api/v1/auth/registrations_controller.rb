@@ -1,10 +1,7 @@
-class Api::V1::Auth::RegistrationsController < ApplicationController
-  def edit
-    user = User.find_by(params[:id])
-  end
+class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:registration).permit(:email, :password, :last_name, :first_name)
+    params.require(:registration).permit(:email, :password, :name)
   end
 end
