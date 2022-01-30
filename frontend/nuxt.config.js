@@ -76,5 +76,8 @@ export default {
     },
   },
 
-  build: {},
+  build: {
+    extend (config, ctx) {
+    }
+  },
 }
