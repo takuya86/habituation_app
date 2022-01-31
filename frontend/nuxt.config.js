@@ -29,9 +29,13 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/axios', '@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
+  buildModules: [],
 
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
+  ],
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
