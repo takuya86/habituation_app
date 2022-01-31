@@ -29,9 +29,13 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/axios', '@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
+  buildModules: [],
 
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
+  ],
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -50,6 +54,34 @@ export default {
       },
     },
   },
+  axios: {
+    baseURL: 'http://localhost:5000',
+  },
+  auth: {
+    redirect: {
+      login: '/users/login',
+      logout: '/',
+      callback: '/callback',
+      home: '/',
+    },
+    localStorage: false,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/v1/auth/sign_in',
+            method: 'post',
+            propertyName: 'access_token',
+          },
+          logout: { url: '/api/v1/auth/sign_out', method: 'delete' },
+          user: false,
+        },
+      },
+    },
+  },
 
-  build: {},
+  build: {
+    extend (config, ctx) {
+    }
+  },
 }
