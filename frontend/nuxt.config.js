@@ -25,7 +25,7 @@ export default {
 
   css: [], // 共通で読み込ませたいCSSプロパティを追加する
 
-  plugins: [],
+  plugins: ['~/plugins/axios.js'],
 
   components: true,
 
@@ -33,8 +33,9 @@ export default {
 
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
   ],
 
   vuetify: {
@@ -81,7 +82,6 @@ export default {
   },
 
   build: {
-    extend (config, ctx) {
-    }
+    extend(config, ctx) {},
   },
 }

@@ -58,7 +58,7 @@ export default {
           },
         })
       } catch (e) {
-        this.error = e.response.data.errors.full_messages
+        console.log(e), (this.error = e.response.data.errors.full_messages)
       }
     },
   },
